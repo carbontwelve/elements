@@ -116,6 +116,24 @@
 .scale(@ratio:1.5){
   .transform(scale(@ratio));
 }
+.transition-property(@property: all) {
+  -moz-transition-property: @property;
+  -webkit-transition-property: @property;
+  -o-transition-property: @property;
+  transition-property: @property;
+}
+.transition-timing(@timing: ease) {
+  -moz-transition-timing-function: @timing;
+  -webkit-transition-timing-function: @timing;
+  -o-transition-timing-function: @timing;
+  transition-timing-function: @timing;
+}
+.transition-delay(@delay: 0) {
+  -moz-transition-delay: @delay;
+  -webkit-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  transition-delay: @delay;
+}
 .transition(@duration:0.2s, @ease:ease-out) {
   -webkit-transition: all @duration @ease;
   -moz-transition: all @duration @ease;
