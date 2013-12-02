@@ -190,3 +190,24 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+
+// add support for transparent background colors
+// while preserving text and foreground elements at 100% opacity
+// based on http://stackoverflow.com/questions/15250708/crossbrowser-opacity-mixin-for-less
+// and also http://stackoverflow.com/questions/806000/css-semi-transparent-background-but-not-text#answer-891366
+.alpha_background(@color: #fff, @alpha: .6)
+{
+
+	@rgba: rgba(red(@color),green(@color),blue(@color),@alpha);
+	@argb: argb(@rgba);
+
+	/* Fallback for web browsers that doesn't support RGBa */
+	background: @color transparent;
+	/* RGBa with 0.6 opacity */
+	background: @rgba;
+	/* For IE 5.5 - 7*/
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+	/* For IE 8*/
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+
+}
